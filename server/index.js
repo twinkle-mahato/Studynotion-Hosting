@@ -23,7 +23,10 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
 	cors({
-		origin:"http://localhost:3000",
+		//origin:"*",
+		//origin:"http://localhost:3000",
+		origin:"https://studynotion-frontend-ashen-alpha.vercel.app",
+		methods:["GET","HEAD","POST","PUT","PATCH","DELETE"],
 		credentials:true,
 	})
 )
