@@ -23,10 +23,9 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
 	cors({
-		 //origin:"*",
+		 origin:"*",
 		//origin:"http://localhost:3000",
-		 origin:"https://studynotion-frontend-inky-phi.vercel.app/",
-		 methods:["GET","HEAD","POST","PUT","PATCH","DELETE"],
+		//methods:["GET","HEAD","POST","PUT","PATCH","DELETE"],
 		credentials:true,
 	})
 )
