@@ -1,5 +1,5 @@
+# FINAL ATTEMPT - DEPLOYMENT FIX
 services:
-  # 1. Backend Web Service
   - type: web
     name: studynotion-backend
     env: node
@@ -8,12 +8,10 @@ services:
     buildCommand: npm install
     startCommand: node index.js
     runtime: node
-
     envVars:
       - key: NODE_ENV
         value: production
 
-  # 2. Frontend Static Site (Assuming React/Client folder)
   - type: static_site
     name: studynotion-frontend
     rootDir: client/
