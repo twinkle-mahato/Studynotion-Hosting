@@ -19,8 +19,9 @@
 .env.production.local
 
 #  Ignore specific .env files
-/client/.env  # Correctly ignores the .env file inside the client folder
-/server/.env  # Correctly ignores the .env file inside the server folde
+.env
+/client/.env  
+/server/.env  
 
 npm-debug.log*
 yarn-debug.log*
