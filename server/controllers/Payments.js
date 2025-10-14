@@ -15,7 +15,10 @@ exports.capturePayment = async (req, res) => {
   const { courses } = req.body
   const userId = req.user.id
   if (courses.length === 0) {
-    return res.json({ success: false, message: "Please Provide Course ID" })
+    return res.json({ 
+      success: false, 
+      message: "Please Provide Course ID"
+     })
   }
 
   let total_amount = 0
@@ -30,22 +33,31 @@ exports.capturePayment = async (req, res) => {
       if (!course) {
         return res
           .status(200)
-          .json({ success: false, message: "Could not find the Course" })
+          .json({ 
+            success: false, 
+            message: "Could not find the Course" 
+          })
       }
 
       // Check if the user is already enrolled in the course
       const uid = new mongoose.Types.ObjectId(userId)
-      if (course.studentsEnroled.includes(uid)) {
+      if (course.studentsEnrolled.includes(uid)) {
         return res
           .status(200)
-          .json({ success: false, message: "Student is already Enrolled" })
+          .json({ 
+            success: false,
+             message: "Student is already Enrolled" 
+            })
       }
 
       // Add the price of the course to the total amount
       total_amount += course.price
     } catch (error) {
       console.log(error)
-      return res.status(500).json({ success: false, message: error.message })
+      return res.status(500).json({ 
+        success: false,
+         message: error.message 
+        })
     }
   }
 
@@ -58,7 +70,7 @@ exports.capturePayment = async (req, res) => {
   try {
     // Initiate the payment using Razorpay
     const paymentResponse = await instance.orders.create(options)
-    console.log(paymentResponse)
+    console.log("Payment Response:", paymentResponse)
     res.json({
       success: true,
       data: paymentResponse,
@@ -67,7 +79,10 @@ exports.capturePayment = async (req, res) => {
     console.log(error)
     res
       .status(500)
-      .json({ success: false, message: "Could not initiate order." })
+      .json({ 
+        success: false, 
+        message: "Could not initiate order." 
+      })
   }
 }
 
@@ -151,7 +166,7 @@ const enrollStudents = async (courses, userId, res) => {
       // Find the course and enroll the student in it
       const enrolledCourse = await Course.findOneAndUpdate(
         { _id: courseId },
-        { $push: { studentsEnroled: userId } },
+        { $push: { studentsEnrolled: userId } },
         { new: true }
       )
 

@@ -29,12 +29,12 @@ export default function Instructor() {
     const totalAmount = instructorData?.reduce(
       (acc, curr) => acc + curr.totalAmountGenerated,
       0
-    )
+    );
   
     const totalStudents = instructorData?.reduce(
       (acc, curr) => acc + curr.totalStudentsEnrolled,
       0
-    )
+    );
   
     return (
       <div>
@@ -42,6 +42,7 @@ export default function Instructor() {
           <h1 className="text-2xl font-bold text-richblack-5">
             Hi {user?.firstName} 👋
           </h1>
+
           <p className="font-medium text-richblack-200">
             Let's start something new
           </p>
@@ -109,7 +110,7 @@ export default function Instructor() {
                       </p>
                       <div className="mt-1 flex items-center space-x-2">
                         <p className="text-xs font-medium text-richblack-300">
-                          {course.studentsEnroled.length} students
+                          {course?.studentsEnroled?.length} students
                         </p>
                         <p className="text-xs font-medium text-richblack-300">
                           |
@@ -124,7 +125,9 @@ export default function Instructor() {
               </div>
             </div>
           </div>
-        ) : (
+        ) :
+      // if false means no course presnet then navigate to add-course route
+        (
           <div className="mt-20 rounded-md bg-richblack-800 p-6 py-20">
             <p className="text-center text-2xl font-bold text-richblack-5">
               You have not created any courses yet

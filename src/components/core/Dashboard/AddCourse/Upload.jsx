@@ -95,10 +95,11 @@ export default function Upload({
         ) : (
           <div
             className="flex w-full flex-col items-center p-6"
+    //  ...getRootProps() from react-dropzone, it already handles click events to open the file dialog.
             {...getRootProps()}
-            onClick={() => inputRef.current.click()} // Trigger file dialog on click
           >
-            <input {...getInputProps()} ref={inputRef} />
+    {/* It makes the input work with drag-and-drop, file selection, and integrates with the dropzone logic. */}
+            <input {...getInputProps()}  />
             <div className="grid aspect-square w-14 place-items-center rounded-full bg-pure-greys-800">
               <FiUploadCloud className="text-2xl text-yellow-50" />
             </div>

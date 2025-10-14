@@ -30,11 +30,14 @@ export default function PublishCourse() {
   const goToCourses = () => {
     dispatch(resetCourseState())
     navigate("/dashboard/my-courses")
+    // MyCourses.js re-runs its initial data fetch (useEffect).
+    window.location.reload() 
   }
 
   const handleCoursePublish = async () => {
     // check if form has been updated or not
     if (
+    // if course status is published and public value is true
       (course?.status === COURSE_STATUS.PUBLISHED &&
         getValues("public") === true) ||
       (course?.status === COURSE_STATUS.DRAFT && getValues("public") === false)

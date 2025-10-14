@@ -1,5 +1,5 @@
 exports.passwordUpdated = (email, name) => {
-	return `<!DOCTYPE html>
+  return `<!DOCTYPE html>
     <html>
     
     <head>
@@ -56,7 +56,7 @@ exports.passwordUpdated = (email, name) => {
     <body>
         <div class="container">
             <a href="https://studynotion-edtech-project.vercel.app"><img class="logo"
-                    src="https://i.ibb.co/7Xyj3PC/logo.png" alt="StudyNotion Logo"></a>
+                    src="https://tse2.mm.bing.net/th/id/OIP.81p_Kc53lEu1NlIIVFYSZAHaDt?pid=Api&P=0&h=180" alt="StudyNotion Logo"></a>
             <div class="message">Password Update Confirmation</div>
             <div class="body">
                 <p>Hey ${name},</p>

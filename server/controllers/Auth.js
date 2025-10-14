@@ -75,7 +75,9 @@ exports.signup = async (req, res) => {
     // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10)
 
-    // Create the user
+    // Create the user, Sets approved to false for instructors, true for others all user
+    // approved starts as an empty string.The condition approved === "Instructor" is always false.So, approved is always set to true for every user, not just instructors
+
     let approved = ""
     approved === "Instructor" ? (approved = false) : (approved = true)
 
@@ -95,7 +97,7 @@ exports.signup = async (req, res) => {
       accountType: accountType,
       approved: approved,
       additionalDetails: profileDetails._id,
-      image: "",
+      image:`https://api.dicebear.com/5.x/initials/svg?seed=${firstName} ${lastName}`,
     })
 
     return res.status(200).json({
@@ -142,7 +144,7 @@ exports.login = async (req, res) => {
     // Generate JWT token and Compare Password
     if (await bcrypt.compare(password, user.password)) {
       const token = jwt.sign(
-        { email: user.email, id: user._id, role: user.role },
+        { email: user.email, id: user._id, accountType: user.role },
         process.env.JWT_SECRET,
         {
           expiresIn: "24h",

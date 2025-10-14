@@ -7,6 +7,7 @@ const { uploadImageToCloudinary } = require("../utils/imageUploader")
 const CourseProgress = require("../models/CourseProgress")
 const { convertSecondsToDuration } = require("../utils/secToDuration")
 // Function to create a new course
+
 exports.createCourse = async (req, res) => {
   try {
     // Get user ID from request object
@@ -134,8 +135,8 @@ exports.createCourse = async (req, res) => {
 // Edit Course Details
 exports.editCourse = async (req, res) => {
   try {
-    const { courseId } = req.body
-    const updates = req.body
+    const { courseId, ...updates } = req.body
+    //const updates = req.body
     const course = await Course.findById(courseId)
 
     if (!course) {
@@ -451,7 +452,7 @@ exports.deleteCourse = async (req, res) => {
     }
 
     // Unenroll students from the course
-    const studentsEnrolled = course.studentsEnroled
+    const studentsEnrolled = course.studentsEnrolled
     for (const studentId of studentsEnrolled) {
       await User.findByIdAndUpdate(studentId, {
         $pull: { courses: courseId },
