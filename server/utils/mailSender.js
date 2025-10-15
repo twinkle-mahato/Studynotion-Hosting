@@ -7,7 +7,7 @@ const mailSender = async (email, title, body) => {
     let transporter = nodemailer.createTransport({
       // pool: true,
       host: process.env.MAIL_HOST,
-      secure: false,
+      secure: true,
       port: 587,
       auth: {
         user: process.env.MAIL_USER,
