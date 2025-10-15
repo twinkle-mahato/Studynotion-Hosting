@@ -3,7 +3,7 @@ const nodemailer = require("nodemailer");
 const mailSender = async (email, title, body) => {
   try {
     // using nodemailer creates a transporter function, which is used to send emails.It requires configuration for the email server you want to use (SMTP settings)
-    console.log("Aagya")
+    console.log("EMAIL:-", email, title, body);
     let transporter = nodemailer.createTransport({
       // pool: true,
       host: process.env.MAIL_HOST,
@@ -17,6 +17,7 @@ const mailSender = async (email, title, body) => {
         rejectUnauthorized: false,
       },
     });
+    console.log("transporter", transporter);
 
     let info = await transporter.sendMail({
       from: "StudyNotion - by Twinkle Mahato",
