@@ -135,8 +135,8 @@ exports.createCourse = async (req, res) => {
 // Edit Course Details
 exports.editCourse = async (req, res) => {
   try {
-    const { courseId, ...updates } = req.body
-    //const updates = req.body
+    const { courseId } = req.body
+    const updates = req.body
     const course = await Course.findById(courseId)
 
     if (!course) {
