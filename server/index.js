@@ -22,13 +22,15 @@ database.connect();
 app.use(express.json());
 app.use(cookieParser());
 app.use(
-	cors({
-		 origin:"*",
-		//origin:"http://localhost:3000",
-		//methods:["GET","HEAD","POST","PUT","PATCH","DELETE"],
-		credentials:true,
-	})
-)
+   cors({
+    origin: [
+      "http://localhost:3000",
+      "https://studynotion-frontend-bice.vercel.app"
+    ],
+    credentials: true,
+  })
+);
+
 
 app.use(
 	fileUpload({
