@@ -16,7 +16,14 @@ const mailSender = async (email, title, body) => {
         rejectUnauthorized: false,
       },
     });
-    console.log("transporter", transporter);
+
+    transporter.verify((error, success) => {
+      if (error) {
+        console.error("❌ Transporter verification failed:", error);
+      } else {
+        console.log("✅ Server is ready to take our messages:", success);
+      }
+    });
 
     let info = await transporter.sendMail({
       from: "StudyNotion - by Twinkle Mahato",
