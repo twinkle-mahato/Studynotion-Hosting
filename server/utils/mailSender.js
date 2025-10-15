@@ -3,11 +3,10 @@ const nodemailer = require("nodemailer");
 const mailSender = async (email, title, body) => {
   try {
     // using nodemailer creates a transporter function, which is used to send emails.It requires configuration for the email server you want to use (SMTP settings)
-    console.log("EMAIL:-", email, title, body);
     let transporter = nodemailer.createTransport({
       // pool: true,
       host: process.env.MAIL_HOST,
-      secure: true,
+      secure: false,
       port: 587,
       auth: {
         user: process.env.MAIL_USER,
