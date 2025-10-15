@@ -5,16 +5,17 @@ const mailSender = async (email, title, body) => {
     // using nodemailer creates a transporter function, which is used to send emails.It requires configuration for the email server you want to use (SMTP settings)
 
     let transporter = nodemailer.createTransport({
+      // pool: true,
       host: process.env.MAIL_HOST,
+      secure: true,
       port: 587,
-      // secure: true,
       auth: {
         user: process.env.MAIL_USER,
         pass: process.env.MAIL_PASS,
       },
-      // tls: {
-      //   rejectUnauthorized: false,
-      // },
+      tls: {
+        rejectUnauthorized: false,
+      },
     });
 
     let info = await transporter.sendMail({
