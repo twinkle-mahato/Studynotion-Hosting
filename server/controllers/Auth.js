@@ -204,7 +204,7 @@ exports.sendotp = async (req, res) => {
     // Check otp is unique or not
     // REMEBER: This code is not optimised because it going to Database to check the entry
     // again and again
-    const result = await Otp.findOne({ otp: otp });
+    const result = await OTP.findOne({ otp: otp });
     while (result) {
       otp = otpGenerator.generate(6, {
         specialChars: false,
@@ -214,7 +214,7 @@ exports.sendotp = async (req, res) => {
     }
 
     const otpPaylaod = { email, otp };
-    const otpBody = await Otp.create(otpPaylaod);
+    const otpBody = await OTP.create(otpPaylaod);
     await mailSender(email, "One Time Password", otpTemplate(otp));
     res.status(200).json({
       success: true,
