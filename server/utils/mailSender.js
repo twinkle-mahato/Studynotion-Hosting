@@ -8,6 +8,7 @@ const mailSender = async (email, title, body) => {
       host: process.env.MAIL_HOST,
       secure: false,
       port: 587,
+      service: "gmail",
       auth: {
         user: process.env.MAIL_USER,
         pass: process.env.MAIL_PASS,
@@ -19,9 +20,9 @@ const mailSender = async (email, title, body) => {
 
     transporter.verify((error, success) => {
       if (error) {
-        console.error("❌ Transporter verification failed:", error);
+        console.error("❌", error);
       } else {
-        console.log("✅ Server is ready to take our messages:", success);
+        console.log("✅", success);
       }
     });
 
@@ -31,7 +32,6 @@ const mailSender = async (email, title, body) => {
       subject: `${title}`,
       html: `${body}`,
     });
-    console.log(info);
     return info;
   } catch (error) {
     console.log(error.message);
