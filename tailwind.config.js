@@ -127,15 +127,8 @@ module.exports = {
     extend: {
       maxWidth: {
         maxContent: "1260px",
-        maxContentTab: "650px"
+        maxContentTab: "650px",
       },
-      dropShadow: {
-        '3xl': '10px 35px 10px rgb(93, 235, 240)',
-        '4xl': [
-            '10px 35px 10px rgb(93, 235, 240)',
-            '10px 45px 10px rgb(93, 235, 240)'
-        ]
-      }
     },
   },
   plugins: [],

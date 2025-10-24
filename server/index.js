@@ -13,6 +13,7 @@ const { cloudinaryConnect } = require("./config/cloudinary");
 const fileUpload = require("express-fileupload");
 const dotenv = require("dotenv");
 
+
 dotenv.config();
 const PORT = process.env.PORT || 4000;
 
@@ -23,9 +24,9 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    //origin:"http://localhost:3000",
-    origin: "https://studynotion-frontendv.vercel.app",
-
+    origin:["http://localhost:3000",
+          "https://studynotion-frontendv.vercel.app",
+    ],
     credentials: true,
   })
 );

@@ -117,8 +117,8 @@ const About = () => {
         {/* <ReviewSlider /> */}
         <ReviewSlider />
       </div>
-      {/* <Footer /> */}
-      <Footer />
+      {/* <Footer />
+      <Footer /> */}
     </div>
   )
 }

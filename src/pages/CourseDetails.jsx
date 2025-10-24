@@ -322,7 +322,7 @@ function CourseDetails() {
           </div>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
       {confirmationModal && <ConfirmationModal modalData={confirmationModal} />}
     </div>
   )

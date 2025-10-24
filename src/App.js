@@ -28,6 +28,7 @@ import CourseDetails from "./pages/CourseDetails";
 import ViewCourse from "./pages/ViewCourse";
 import VideoDetails from "./components/core/ViewCourse/VideoDetails";
 import Instructor from "./components/core/Dashboard/InstructorDashboard/Instructor";
+import Footer from "./components/common/Footer";
 
 function App() {
 
@@ -161,6 +162,7 @@ function App() {
 
 
     </Routes>
+    <Footer />
 
    </div>
   );
